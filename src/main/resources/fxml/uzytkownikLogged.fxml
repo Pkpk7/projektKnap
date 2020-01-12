@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="glowny" prefHeight="487.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.frontEnd">
+   <children>
+      <JFXListView id="rezerwacje" layoutX="329.0" layoutY="73.0" prefHeight="400.0" prefWidth="330.0" />
+      <Label layoutX="344.0" layoutY="22.0" text="Rezerwacje">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <JFXButton id="exit" layoutX="685.0" layoutY="21.0" text="X">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="wygenerujUmowe" layoutX="130.0" layoutY="261.0" style="-fx-background-color: #898989;" text="Wygeneruj umowę" textFill="#2c2c2c" />
+      <JFXButton id="logout" layoutX="24.0" layoutY="32.0" style="-fx-background-color: #c1c1ff;" text="Logout" textFill="WHITE" />
+      <ImageView id="ikonka" fitHeight="36.0" fitWidth="40.0" layoutX="103.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../loginIcon.png" />
+         </image>
+      </ImageView>
+      <Label id="witaj" layoutX="83.0" layoutY="65.0" prefHeight="17.0" prefWidth="77.0" text="Label" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

@@ -8,15 +8,15 @@ import java.util.Iterator;
 @Table(name="admin")
 public class Admin extends Osoba {
 
-    private KlienciSingleton wszyscyKlienci = KlienciSingleton.getKlienciSingletonInstance();
-    private OfertySingleton wszystkieOferty = OfertySingleton.getOfertySingletonInstance();
-    private UmowySingleton wszystkieUmowy = UmowySingleton.getUmowySingletonInstance();
-    private RezerwacjeSingleton wszystkieRezerwacje = RezerwacjeSingleton.getRezerwacjaSingletonInstance();
+    transient private KlienciSingleton wszyscyKlienci = KlienciSingleton.getKlienciSingletonInstance();
+    transient private OfertySingleton wszystkieOferty = OfertySingleton.getOfertySingletonInstance();
+    transient private UmowySingleton wszystkieUmowy = UmowySingleton.getUmowySingletonInstance();
+    transient private RezerwacjeSingleton wszystkieRezerwacje = RezerwacjeSingleton.getRezerwacjaSingletonInstance();
 
-    public Admin(String imie, String nazwisko, String pesel,
+    public Admin(String login, String password, String imie, String nazwisko, String pesel,
                  String numerTelefonu, String email) throws Exception{
 
-        super(imie, nazwisko, pesel, numerTelefonu, email);
+        super(login, password, imie, nazwisko, pesel, numerTelefonu, email);
         AdminiSingleton.getAdminiSingletonInstance().getListaAdminow().add(this);
     }
 

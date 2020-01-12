@@ -8,11 +8,23 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/projekt_nieruchomosci</property>
         <property name="hibernate.connection.username">root</property>
-        <!--<property name="hibernate.connection.password"></property>-->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MariaDB53Dialect</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">update </property>
-        <mapping resource="user.hbm.xml" />
+
+        <!-- Specifying Session Context -->
+        <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+
+        <!-- Mapping With Model Class Containing Annotations -->
+        <mapping class="com.company.Uzytkownik" />
+        <mapping class="com.company.Rezerwacja" />
+        <mapping class="com.company.Klient" />
+        <mapping class="com.company.Admin" />
+        <mapping class="com.company.Oferta" />
+        <mapping class="com.company.Umowa" />
+        <mapping class="com.company.Telefon" />
+        <mapping class="com.company.Email" />
     </session-factory>
 </hibernate-configuration>

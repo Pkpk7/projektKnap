@@ -8,23 +8,24 @@ import java.util.UUID;
 @Entity
 @Table(name="klient")
 public class Klient extends Osoba {
-    private OfertySingleton wszystkieOferty = OfertySingleton.getOfertySingletonInstance();
-    private RezerwacjeSingleton wszystkieRezerwacje = RezerwacjeSingleton.getRezerwacjaSingletonInstance();
+    transient private OfertySingleton wszystkieOferty = OfertySingleton.getOfertySingletonInstance();
+    transient private RezerwacjeSingleton wszystkieRezerwacje = RezerwacjeSingleton.getRezerwacjaSingletonInstance();
 
 
-    public Klient(String imie, String nazwisko, String pesel, String numerTelefonu, String email) throws Exception {
-        super(imie, nazwisko, pesel, numerTelefonu, email);
+    public Klient(String login, String password, String imie, String nazwisko, String pesel, String numerTelefonu, String email) throws Exception {
+        super(login, password, imie, nazwisko, pesel, numerTelefonu, email);
         KlienciSingleton.getKlienciSingletonInstance().getListaKlientow().add(this);
     }
 
+    public Klient(){}
     /**
      * Tworzy nową rezerwacje dla danego klienta i oferty, a następnie
      * dodaje ją do globalnej listy rezerwacji.
      * @param oferta Oferta która dany klient będzie rezerwował
      */
-    public void zarezerwuj(Oferta oferta){
+    public void zarezerwuj(Oferta oferta, int id){
         if(wszystkieOferty.getListaOfert().contains(oferta)){
-            Rezerwacja rezerwacja = new Rezerwacja(oferta,this, UUID.randomUUID().toString());
+            Rezerwacja rezerwacja = new Rezerwacja(oferta,this, id);
             wszystkieRezerwacje.getListaRezerwacji().add(rezerwacja);
         }
     }

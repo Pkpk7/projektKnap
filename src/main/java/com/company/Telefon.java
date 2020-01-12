@@ -12,6 +12,8 @@ public class Telefon {
         setTelefon(numerTelefonu);
     }
 
+    public Telefon(){}
+
     public String getTelefon() {
         return numerTelefonu;
     }

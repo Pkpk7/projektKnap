@@ -12,6 +12,8 @@ public class Email {
         setEmail(email);
     }
 
+    public Email(){}
+
     public String getEmail() {
         return email;
     }

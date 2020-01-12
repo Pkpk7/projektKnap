@@ -4,6 +4,13 @@ import javax.persistence.*;
 
 @MappedSuperclass
 public class Osoba {
+
+    @Column
+    private String login;
+
+    @Column
+    private String password;
+
     @Column
     private String imie;
 
@@ -22,7 +29,9 @@ public class Osoba {
     @Embedded
     private Email email;
 
-    public Osoba(String imie, String nazwisko, String pesel, String numerTelefonu, String email) throws Exception {
+    public Osoba(String login, String password, String imie, String nazwisko, String pesel, String numerTelefonu, String email) throws Exception {
+        this.login = login;
+        this.password = password;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.pesel = pesel;
@@ -81,5 +90,29 @@ public class Osoba {
         doPorownania.getNumerTelefonu().equals(this.getNumerTelefonu())) return true;
         return false;
 
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 }

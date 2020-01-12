@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="353.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.frontEnd">
+   <children>
+      <ImageView fitHeight="361.0" fitWidth="678.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../2bfb6b646097abbc26d218b78370c5c9.jpg" />
+         </image>
+      </ImageView>
+      <JFXTextField id="yourName" layoutX="272.0" layoutY="28.0" promptText="Your Name" />
+      <JFXTextField id="yourSurname" layoutX="272.0" layoutY="63.0" promptText="Your Surname" />
+      <JFXTextField id="yourLogin" layoutX="272.0" layoutY="95.0" promptText="Your Login" />
+      <JFXPasswordField id="yourPassword" layoutX="272.0" layoutY="129.0" promptText="Your password" />
+      <JFXPasswordField id="repeatYourPassword" layoutX="272.0" layoutY="165.0" promptText="Repeat your password" />
+      <JFXTextField id="pesel" layoutX="272.0" layoutY="198.0" promptText="Pesel" />
+      <JFXTextField id="numerTelefonu" layoutX="272.0" layoutY="233.0" promptText="Numer telefonu" />
+      <JFXTextField id="email" layoutX="272.0" layoutY="273.0" promptText="Email" />
+      <Label layoutX="45.0" layoutY="100.0" text="Register" textFill="#3f4045">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <JFXButton id="registerButton" layoutX="314.0" layoutY="315.0" style="-fx-background-color: #898989;" text="Register" textFill="#2c2c2c" />
+      <JFXButton id="zamknij2" layoutX="624.0" layoutY="19.0" text="X">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="cofnij" layoutX="572.0" layoutY="14.0" text="&lt;">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+      <Label id="userAdded" layoutX="453.0" layoutY="157.0" text="User was successfully added! " textFill="#587c55" visible="false" />
+   </children>
+</AnchorPane>

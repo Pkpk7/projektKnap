@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="488.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.frontEnd">
+   <children>
+      <JFXButton id="logOutAdmin" layoutX="24.0" layoutY="32.0" style="-fx-background-color: #c1c1ff;" text="Logout" textFill="WHITE" />
+      <JFXButton id="exitAdmin" layoutX="695.0" layoutY="31.0" text="X">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="backAdmin" layoutX="655.0" layoutY="31.0" text="&lt;">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXTextArea id="opisOferta" layoutX="114.0" layoutY="215.0" prefHeight="175.0" prefWidth="464.0" />
+      <JFXTextArea id="cenaOferta" layoutX="114.0" layoutY="439.0" prefHeight="36.0" prefWidth="464.0" />
+      <Label layoutX="26.0" layoutY="244.0" text="Opis">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="449.0" text="Cena">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <JFXButton id="addOferta" layoutX="643.0" layoutY="405.0" style="-fx-background-color: #77d65a;" text="Dodaj" textFill="WHITE" />
+      <Label id="gdzie" layoutX="23.0" layoutY="111.0" text="Adres">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <JFXTextArea id="adresOferta" layoutX="114.0" layoutY="109.0" prefHeight="36.0" prefWidth="464.0" />
+      <Label layoutX="591.0" layoutY="451.0" text="zł">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ImageView id="ikonka" fitHeight="36.0" fitWidth="40.0" layoutX="96.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../loginIcon.png" />
+         </image>
+      </ImageView>
+      <Label id="witaj" layoutX="76.0" layoutY="62.0" prefHeight="17.0" prefWidth="77.0" text="Label" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

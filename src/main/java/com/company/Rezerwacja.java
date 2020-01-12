@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="rezerwacja")
     public class Rezerwacja {
-        @OneToOne(fetch = FetchType.LAZY)
+        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
         @JoinColumn(name="idOferty")
         private Oferta ofertaKtoraJestZarezerwowana;
 
@@ -15,13 +15,16 @@ import javax.persistence.*;
 
         @Column
         @Id
-        private String idRezerwacji;
+        @GeneratedValue(strategy=GenerationType.AUTO)
+        private int idRezerwacji;
 
-        public Rezerwacja(Oferta ofertaKtoraJestZarezerwowana, Klient klientKtoryRezerwuje, String idRezerwacji) {
+        public Rezerwacja(Oferta ofertaKtoraJestZarezerwowana, Klient klientKtoryRezerwuje, int idRezerwacji) {
             this.ofertaKtoraJestZarezerwowana = ofertaKtoraJestZarezerwowana;
             this.klientKtoryRezerwuje = klientKtoryRezerwuje;
             this.idRezerwacji = idRezerwacji;
         }
+
+        public Rezerwacja(){}
 
         @Override
         public boolean equals(Object object){
@@ -34,7 +37,7 @@ import javax.persistence.*;
             Rezerwacja doPorownania = (Rezerwacja) object;
             if(doPorownania.getKlientKtoryRezerwuje().equals(this.getKlientKtoryRezerwuje()) &&
             doPorownania.getOfertaKtoraJestZarezerwowana().equals(this.getOfertaKtoraJestZarezerwowana()) &&
-            doPorownania.getIdRezerwacji().equals(this.getIdRezerwacji())) return true;
+            doPorownania.getIdRezerwacji() == this.getIdRezerwacji()) return true;
             return false;
         }
 
@@ -54,11 +57,11 @@ import javax.persistence.*;
             this.klientKtoryRezerwuje = klientKtoryRezerwuje;
         }
 
-        public String getIdRezerwacji() {
+        public int getIdRezerwacji() {
             return idRezerwacji;
         }
 
-        public void setIdRezerwacji(String idRezerwacji) {
+        public void setIdRezerwacji(int idRezerwacji) {
             this.idRezerwacji = idRezerwacji;
         }
     }

@@ -11,7 +11,8 @@ public class Umowa {
 
     @Column
     @Id
-    private String idUmowy;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int idUmowy;
 
     @Column
     private String zawartoscUmowy;
@@ -20,22 +21,18 @@ public class Umowa {
     @JoinColumn(name="idKlienta")
     private Klient klientZawierajacyUmowe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idUzytkownika")
-    private Uzytkownik uzytkownikWydajacyUmowe;
 
-    @Column(name="czyPodpisana")
-    private Boolean podpisana;
 
-    public Umowa(Oferta ofertaDoKtorejPowstalaUmowa, String idUmowy, String zawartoscUmowy,
-                 Klient klientZawierajacyUmowe, Uzytkownik uzytkownikWydajacyUmowe, Boolean podpisana) {
+
+    public Umowa(Oferta ofertaDoKtorejPowstalaUmowa, int idUmowy, String zawartoscUmowy,
+                 Klient klientZawierajacyUmowe) {
         this.ofertaDoKtorejPowstalaUmowa = ofertaDoKtorejPowstalaUmowa;
         this.idUmowy = idUmowy;
         this.zawartoscUmowy = zawartoscUmowy;
         this.klientZawierajacyUmowe = klientZawierajacyUmowe;
-        this.uzytkownikWydajacyUmowe = uzytkownikWydajacyUmowe;
-        this.podpisana = podpisana;
     }
+
+    public Umowa(){}
 
     @Override
     public boolean equals(Object object){
@@ -47,20 +44,18 @@ public class Umowa {
             return false;
         Umowa doPorownania = (Umowa) object;
         if(doPorownania.getOfertaDoKtorejPowstalaUmowa().equals(this.ofertaDoKtorejPowstalaUmowa) &&
-        doPorownania.getPodpisana() == this.getPodpisana() &&
-        doPorownania.getIdUmowy().equals(this.getIdUmowy()) &&
+        doPorownania.getIdUmowy() == this.getIdUmowy() &&
         doPorownania.getKlientZawierajacyUmowe().equals(this.getKlientZawierajacyUmowe()) &&
-        doPorownania.getUzytkownikWydajacyUmowe().equals(this.getUzytkownikWydajacyUmowe()) &&
         doPorownania.getZawartoscUmowy().equals(this.getZawartoscUmowy())) return true;
         return false;
 
     }
 
-    public String getIdUmowy() {
+    public int getIdUmowy() {
         return idUmowy;
     }
 
-    public void setIdUmowy(String idUmowy) {
+    public void setIdUmowy(int idUmowy) {
         this.idUmowy = idUmowy;
     }
 
@@ -80,13 +75,7 @@ public class Umowa {
         this.klientZawierajacyUmowe = klientZawierajacyUmowe;
     }
 
-    public Uzytkownik getUzytkownikWydajacyUmowe() {
-        return uzytkownikWydajacyUmowe;
-    }
 
-    public void setUzytkownikWydajacyUmowe(Uzytkownik uzytkownikWydajacyUmowe) {
-        this.uzytkownikWydajacyUmowe = uzytkownikWydajacyUmowe;
-    }
 
     public Oferta getOfertaDoKtorejPowstalaUmowa() {
         return ofertaDoKtorejPowstalaUmowa;
@@ -96,11 +85,5 @@ public class Umowa {
         this.ofertaDoKtorejPowstalaUmowa = ofertaDoKtorejPowstalaUmowa;
     }
 
-    public Boolean getPodpisana() {
-        return podpisana;
-    }
 
-    public void setPodpisana(Boolean podpisana) {
-        this.podpisana = podpisana;
-    }
 }

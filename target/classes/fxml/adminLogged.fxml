@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="glowny" prefHeight="486.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.frontEnd">
+   <children>
+      <AnchorPane prefHeight="486.0" prefWidth="375.0">
+         <children>
+            <Label layoutX="142.0" layoutY="22.0" text="Oferty">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <JFXListView id="oferty" layoutX="78.0" layoutY="72.0" />
+            <JFXButton id="logOutAdmin" layoutX="14.0" layoutY="22.0" style="-fx-background-color: #c1c1ff;" text="Logout" textFill="WHITE" />
+            <JFXButton id="dodajOferte" layoutX="293.0" layoutY="72.0" style="-fx-background-color: #66de72;" text="Dodaj" textFill="WHITE" />
+            <JFXButton id="usunOferte" layoutX="293.0" layoutY="113.0" style="-fx-background-color: #db6c64;" text="Usuń" textFill="WHITE" />
+            <ImageView id="ikonka" fitHeight="36.0" fitWidth="40.0" layoutX="78.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../loginIcon.png" />
+               </image>
+            </ImageView>
+            <Label id="witaj" layoutX="58.0" layoutY="52.0" prefHeight="17.0" prefWidth="77.0" text="Label" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="375.0" prefHeight="486.0" prefWidth="375.0" style="-fx-background-color: #898989;">
+         <children>
+            <Label layoutX="146.0" layoutY="27.0" text="Rezerwacje">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <JFXListView id="rezerwacje" layoutX="110.0" layoutY="72.0" />
+            <JFXButton id="zamknij4" layoutX="328.0" layoutY="14.0" text="X">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton id="wygenerujUmoweAdmin" layoutX="7.0" layoutY="393.0" prefHeight="44.0" prefWidth="94.0" style="-fx-background-color: #e3aaf7;" text="Wyg. umowe" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

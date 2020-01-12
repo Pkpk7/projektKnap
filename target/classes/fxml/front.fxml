@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="glowny" prefHeight="353.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.frontEnd">
+   <children>
+      <ImageView fitHeight="464.0" fitWidth="678.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../2bfb6b646097abbc26d218b78370c5c9.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="377.0" layoutY="33.0" opacity="0.78" prefHeight="281.0" prefWidth="276.0" style="-fx-background-color: #edfdff;">
+         <children>
+            <Label layoutX="82.0" layoutY="14.0" prefHeight="45.0" prefWidth="113.0" text="Sign in" textFill="#4e516b">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <JFXTextField id="login" focusColor="#504c75" layoutX="72.0" layoutY="77.0" promptText="login" />
+            <JFXPasswordField id="password" focusColor="#504c75" layoutX="71.0" layoutY="141.0" promptText="password" />
+            <JFXButton id="signin" layoutX="71.0" layoutY="201.0" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #adff7e;" text="Sign in" textFill="#4b683e" />
+            <Label layoutX="71.0" layoutY="243.0" text="Wrong login or password" textFill="#eb2f2f" visible="false" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="35.0" layoutY="124.0" prefHeight="53.0" prefWidth="332.0" text="Wszystko czego potrzebujesz!" textFill="#3a4061">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="177.0" text="Dobre nieruchomości w przystęnych cenach" textFill="#17205a" />
+      <JFXButton id="zarejestrujSie" layoutX="35.0" layoutY="212.0" style="-fx-background-color: #656ea8;" text="Register" textFill="#e8e5ff" />
+      <JFXButton id="zamknij" layoutX="641.0" layoutY="2.0" text="X">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

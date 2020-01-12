@@ -22,17 +22,17 @@ public class JUnitTests {
     }
 
     public static Admin inicjalizacjaAdmina() throws Exception {
-        return new Admin("Adam", "Kowalski", "01234567891", "123456789",
+        return new Admin("","","Adam", "Kowalski", "01234567891", "123456789",
                 "adamkowalski@gmail.com");
     }
 
     public static Klient inicjalizacjaKlienta() throws Exception{
-        return new Klient("Tomasz","Nowak", "01234567892", "456456456",
+        return new Klient("", "", "Tomasz","Nowak", "01234567892", "456456456",
                 "tomaszNowak@gmail.com");
     }
 
     public static Uzytkownik inicjalizacjaUzytkownika() throws Exception{
-        return new Uzytkownik("Rafał","Kowalski", "12345678907", "567567567",
+        return new Uzytkownik("", "", "Rafał","Kowalski", "12345678907", "567567567",
                 "rafalKowalski@gmail.com");
     }
 
@@ -98,27 +98,12 @@ public class JUnitTests {
         Klient klient = inicjalizacjaKlienta();
         Uzytkownik uzytkownik = inicjalizacjaUzytkownika();
 
-        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
-        Umowa umowa = new Umowa(ofertaZKtorejPowstanieUmowa, UUID.randomUUID().toString(), "Tresc Umowy",
-                klient, uzytkownik,false);
+        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(0,"Tresc oferty","",0);
+        Umowa umowa = new Umowa(ofertaZKtorejPowstanieUmowa, 0, "Tresc Umowy",
+                klient);
         admin.stworzUmowe(umowa);
 
         assertEquals(umowa,UmowySingleton.getUmowySingletonInstance().getListaUmow().get(0));
-    }
-
-    @Test
-    public void czyDanieDoPodpisaniaUmowyDoKlientaPrzezUzytkownikaSprawiaZeStajeSieOnaPodpisana() throws Exception{
-        Admin admin = inicjalizacjaAdmina();
-        Klient klient = inicjalizacjaKlienta();
-        Uzytkownik uzytkownik = inicjalizacjaUzytkownika();
-
-        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
-        Umowa umowa = new Umowa(ofertaZKtorejPowstanieUmowa, UUID.randomUUID().toString(), "Tresc Umowy",
-                klient, uzytkownik,false);
-        admin.stworzUmowe(umowa);
-
-        uzytkownik.podpisanieUmowy(umowa, klient);
-        assertEquals(true, umowa.getPodpisana());
     }
 
     @Test
@@ -134,7 +119,7 @@ public class JUnitTests {
     @Test
     public void czyPoUsunieciuPrzezAdminaOfertyZnikaOnaZSingletona() throws Exception{
         Admin admin = inicjalizacjaAdmina();
-        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
+        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(0,"Tresc oferty", "",0);
         admin.stworzOferte(ofertaZKtorejPowstanieUmowa);
         assertEquals(ofertaZKtorejPowstanieUmowa, OfertySingleton.getOfertySingletonInstance().getListaOfert().get(0));
         admin.usunOferte(ofertaZKtorejPowstanieUmowa);
@@ -144,7 +129,7 @@ public class JUnitTests {
     @Test
     public void czyPoEdycjiOfertyPrzezAdminaJestOnaZedytowana() throws Exception {
         Admin admin = inicjalizacjaAdmina();
-        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
+        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(0,"Tresc oferty","",0);
         admin.stworzOferte(ofertaZKtorejPowstanieUmowa);
         assertEquals(ofertaZKtorejPowstanieUmowa.getZawartoscOferty(), "Tresc oferty");
         admin.edytujOferte(ofertaZKtorejPowstanieUmowa, "Nowa tresc oferty");
@@ -154,7 +139,7 @@ public class JUnitTests {
     @Test
     public void czyPoStworzeniuPrzezAdminaOfertyJestOnaDodanaDoSingletona() throws Exception {
         Admin admin = inicjalizacjaAdmina();
-        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
+        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(0,"Tresc oferty","",0);
         admin.stworzOferte(ofertaZKtorejPowstanieUmowa);
         assertEquals(OfertySingleton.getOfertySingletonInstance().getListaOfert().get(0),ofertaZKtorejPowstanieUmowa);
     }
@@ -163,9 +148,9 @@ public class JUnitTests {
     public void czyPoZarezerwowaniuOfertyPrzezKlientaJestOnaZarezerwowana() throws Exception {
         Admin admin = inicjalizacjaAdmina();
         Klient klient = inicjalizacjaKlienta();
-        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
+        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(0,"Tresc oferty","",0);
         admin.stworzOferte(ofertaZKtorejPowstanieUmowa);
-        klient.zarezerwuj(ofertaZKtorejPowstanieUmowa);
+        klient.zarezerwuj(ofertaZKtorejPowstanieUmowa, 0);
         assertEquals(RezerwacjeSingleton.getRezerwacjaSingletonInstance().getListaRezerwacji().get(0).getOfertaKtoraJestZarezerwowana(),
                 ofertaZKtorejPowstanieUmowa);
     }
@@ -174,9 +159,9 @@ public class JUnitTests {
     public void czyPoOdrezerwowaniuOfertyPrzezKlientaJestOnaOdrezerwowana() throws Exception {
         Admin admin = inicjalizacjaAdmina();
         Klient klient = inicjalizacjaKlienta();
-        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
+        Oferta ofertaZKtorejPowstanieUmowa = new Oferta(0,"Tresc oferty","",0);
         admin.stworzOferte(ofertaZKtorejPowstanieUmowa);
-        klient.zarezerwuj(ofertaZKtorejPowstanieUmowa);
+        klient.zarezerwuj(ofertaZKtorejPowstanieUmowa, 0);
         klient.odrezerwuj(RezerwacjeSingleton.getRezerwacjaSingletonInstance().getListaRezerwacji().get(0));
         assertTrue(RezerwacjeSingleton.getRezerwacjaSingletonInstance().getListaRezerwacji().isEmpty());
     }
@@ -184,12 +169,12 @@ public class JUnitTests {
     public void czyKlientPotrafiOdpowiednioZwrocicSwojeRezerwacjeZaPomocGetRezerwacjeKlienta() throws Exception {
         Admin admin = inicjalizacjaAdmina();
         Klient klient = inicjalizacjaKlienta();
-        Oferta oferta1 = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
-        Oferta oferta2 = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
+        Oferta oferta1 = new Oferta(0,"Tresc oferty","",0);
+        Oferta oferta2 = new Oferta(0,"Tresc oferty","",0);
         admin.stworzOferte(oferta1);
         admin.stworzOferte(oferta2);
-        klient.zarezerwuj(oferta1);
-        klient.zarezerwuj(oferta2);
+        klient.zarezerwuj(oferta1, 0);
+        klient.zarezerwuj(oferta2, 1);
         assertEquals(klient.getRezerwacjeKlienta().size(),2);
         assertEquals(klient.getRezerwacjeKlienta().get(0), RezerwacjeSingleton.getRezerwacjaSingletonInstance().getListaRezerwacji().get(0));
         assertEquals(klient.getRezerwacjeKlienta().get(1), RezerwacjeSingleton.getRezerwacjaSingletonInstance().getListaRezerwacji().get(1));
@@ -199,9 +184,9 @@ public class JUnitTests {
     public void czyPoUsunieciuOfertyUsuwaneSaTakzeRezerwacjeZNiaZwiazane() throws Exception {
         Admin admin = inicjalizacjaAdmina();
         Klient klient = inicjalizacjaKlienta();
-        Oferta oferta1 = new Oferta(UUID.randomUUID().toString(),"Tresc oferty");
+        Oferta oferta1 = new Oferta(0,"Tresc oferty","",0);
         admin.stworzOferte(oferta1);
-        klient.zarezerwuj(oferta1);
+        klient.zarezerwuj(oferta1, 0);
         admin.usunOferte(oferta1);
         assertTrue(RezerwacjeSingleton.getRezerwacjaSingletonInstance().getListaRezerwacji().isEmpty());
     }
